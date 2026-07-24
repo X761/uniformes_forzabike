@@ -10,8 +10,8 @@ let isSubmitted = false;
 
 // Configuration defaults
 let config = {
-    whatsapp: "521234567890", 
-    sheetUrl: ""
+    whatsapp: "526692521756",
+    sheetUrl: "https://script.google.com/macros/s/AKfycbyDzr4NwtqL46BnPTWMabg2GK0DTz30YcUS5niV-qxMIwxlKWSdiylR1yEGZiMgfa38/exec"
 };
 
 // DOM Elements
@@ -175,12 +175,14 @@ function loadConfig() {
     
     if (savedWhatsapp) {
         config.whatsapp = savedWhatsapp;
-        cfgWhatsappInput.value = savedWhatsapp;
     }
     if (savedSheetUrl) {
         config.sheetUrl = savedSheetUrl;
-        cfgSheetUrlInput.value = savedSheetUrl;
     }
+
+    // Sincronizar inputs del modal con la configuración actual
+    if (cfgWhatsappInput) cfgWhatsappInput.value = config.whatsapp;
+    if (cfgSheetUrlInput) cfgSheetUrlInput.value = config.sheetUrl;
 }
 
 // Get or initialize state for a specific year and product
