@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de Uniformes - FORZABIKE 10 Aniversario</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2026070802">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Anniversary Hero Banner -->
+        <div class="anniversary-banner">
+            <div class="banner-sparkles"></div>
+            <div class="banner-content">
+                <span class="anniversary-badge">10º ANIVERSARIO</span>
+                <h1 class="brand-title">FORZABIKE</h1>
+                <p class="brand-subtitle">Colección Especial & Ediciones Conmemorativas</p>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo-area">
+                    <span class="gold-pulse-dot"></span>
+                    <span class="logo-text">Uniforms Portal</span>
+                </div>
+                <button id="btn-config" class="icon-button" title="Configurar Enlaces">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-gear"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.1a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <!-- Order Form -->
+            <div class="form-wrapper">
+                <form id="order-form" onsubmit="event.preventDefault();">
+                    <!-- Step 1: Customer Info -->
+                    <section class="form-section card">
+                        <div class="section-header">
+                            <span class="step-badge">1</span>
+                            <h2>Datos de quien solicita</h2>
+                        </div>
+                        <div id="customer-info-block">
+                            <div class="input-group">
+                                <label for="customer-name">Nombre completo</label>
+                                <input type="text" id="customer-name" placeholder="Ej. Juan Pérez García" required autocomplete="name">
+                                <span class="helper-text">Escribe tu nombre tal como debe registrarse en el pedido.</span>
+                            </div>
+                            <div class="order-id-card">
+                                <span class="order-id-label">ID del pedido</span>
+                                <span id="order-id-value" class="order-id-value">Cargando...</span>
+                            </div>
+                        </div>
+                        <div id="confirmation-summary-block" class="confirmation-summary-block hidden">
+                            <div class="confirmation-summary-row">
+                                <span class="confirmation-label">Cliente:</span>
+                                <span id="confirmation-name" class="confirmation-value"></span>
+                            </div>
+                            <div class="confirmation-summary-row">
+                                <span class="confirmation-label">ID:</span>
+                                <span id="confirmation-id" class="confirmation-value"></span>
+                            </div>
+                            <div class="confirmation-summary-row">
+                                <span class="confirmation-label">Prendas:</span>
+                                <span id="confirmation-total" class="confirmation-value"></span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Step 2: Year Selector Switcher -->
+                    <section class="form-section year-selector-section card">
+                        <div class="section-header">
+                            <span class="step-badge">2</span>
+                            <h2>Selecciona la Edición del Uniforme</h2>
+                        </div>
+                        <div class="year-switcher-container">
+                            <div class="year-tabs">
+                                <button type="button" class="year-tab active" data-target-type="current">
+                                    <span class="tab-star">★</span> Edición 2026 (Actual)
+                                </button>
+                                <button type="button" class="year-tab" data-target-type="historical">
+                                    Colecciones Anteriores
+                                </button>
+                            </div>
+                            
+                            <div id="historical-select-wrapper" class="historical-dropdown-wrapper hidden">
+                                <label for="historical-year-select">Elige el año:</label>
+                                <select id="historical-year-select" class="year-dropdown">
+                                    <option value="2025" selected>Colección 2025</option>
+                                    <option value="2024">Colección 2024</option>
+                                    <option value="2023">Colección 2023</option>
+                                    <option value="2022">Colección 2022</option>
+                                    <option value="2021">Colección 2021</option>
+                                    <option value="2020">Colección 2020</option>
+                                </select>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Step 3: Catalog -->
+                    <section class="form-section">
+                        <div class="section-header catalog-header">
+                            <span class="step-badge">3</span>
+                            <h2>Selecciona prendas, corte y tallas</h2>
+                            <span id="active-year-indicator" class="active-year-badge">Edición 2026</span>
+                        </div>
+                        <p id="historical-notice" class="historical-notice hidden">Nota: Las imágenes de referencia se ocultan en ediciones anteriores para evitar confusiones con el diseño actual.</p>
+
+                        <div id="catalog-grid" class="catalog-grid">
+                            <!-- Jerseys Category -->
+                            <div class="category-block">
+                                <h3 class="category-title">Jerseys</h3>
+                                <div class="product-cards-container">
+                                    <!-- Card 1: Jersey Manga Corta -->
+                                    <div class="product-card" data-product-id="jersey_manga_corta" data-product-name="Jersey Manga Corta">
+                                        <div class="card-glow"></div>
+                                        
+                                        <!-- Product Render Image -->
+                                        <div class="product-image-container">
+                                            <img src="images/jersey_manga_corta.jpg" alt="Jersey Manga Corta" class="product-img" onerror="this.parentElement.style.display='none';">
+                                        </div>
+
+                                        <div class="product-details">
+                                            <div class="product-icon">
+                                                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
+                                                    <path d="M30,30 L20,40 L35,50 L35,85 L65,85 L65,50 L80,40 L70,30 L50,38 Z" stroke-linejoin="round" fill="rgba(212, 175, 55, 0.03)"/>
+                                                    <path d="M20,40 L35,50" stroke-linecap="round"/>
+                                                    <path d="M80,40 L65,50" stroke-linecap="round"/>
+                                                </svg>
+                                            </div>
+                                            <div class="product-info">
+                                                <h4 class="product-title-label">Jersey Manga Corta</h4>
+                                                <p class="product-desc">Corte ergonómico, tela transpirable y cierre completo.</p>
+                                            </div>
+                                        </div>
+                                        <div class="product-options">
+                                            <div class="options-column">
+                                                <div class="option-row">
+                                                    <label>Corte:</label>
+                                                    <select class="gender-select">
+                                                        <option value="Caballero" selected>Caballero</option>
+                                                        <option value="Dama">Dama</option>
+                                                        <option value="Otro">Otro (Especial)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="option-row">
+                                                    <label>Talla:</label>
+                                                    <select class="size-select">
+                                                        <option value="XS">XS</option>
+                                                        <option value="S">S</option>
+                                                        <option value="M" selected>M</option>
+                                                        <option value="L">L</option>
+                                                        <option value="XL">XL</option>
+                                                        <option value="XXL">XXL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="option-row special-detail-row hidden">
+                                                    <label>Detalle:</label>
+                                                    <input type="text" class="special-input" placeholder="Ej. Talla 10 (Niño), Juvenil...">
+                                                </div>
+                                            </div>
+                                            <div class="option-row qty-row">
+                                                <div class="qty-stepper">
+                                                    <button type="button" class="btn-qty-minus">-</button>
+                                                    <input type="number" class="qty-input" value="0" min="0" max="99" readonly>
+                                                    <button type="button" class="btn-qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card 2: Jersey Manga Larga -->
+                                    <div class="product-card" data-product-id="jersey_manga_larga" data-product-name="Jersey Manga Larga">
+                                        <div class="card-glow"></div>
+                                        
+                                        <!-- Product Render Image -->
+                                        <div class="product-image-container">
+                                            <img src="images/jersey_manga_larga.jpg" alt="Jersey Manga Larga" class="product-img" onerror="this.parentElement.style.display='none';">
+                                        </div>
+
+                                        <div class="product-details">
+                                            <div class="product-icon">
+                                                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
+                                                    <path d="M30,30 L10,50 L20,60 L35,50 L35,85 L65,85 L65,50 L80,60 L90,50 L70,30 L50,38 Z" stroke-linejoin="round" fill="rgba(212, 175, 55, 0.03)"/>
+                                                    <path d="M35,50 L10,50" stroke-dasharray="2,2"/>
+                                                    <path d="M65,50 L90,50" stroke-dasharray="2,2"/>
+                                                </svg>
+                                            </div>
+                                            <div class="product-info">
+                                                <h4 class="product-title-label">Jersey Manga Larga</h4>
+                                                <p class="product-desc">Protección solar UV y corte aerodinámico.</p>
+                                            </div>
+                                        </div>
+                                        <div class="product-options">
+                                            <div class="options-column">
+                                                <div class="option-row">
+                                                    <label>Corte:</label>
+                                                    <select class="gender-select">
+                                                        <option value="Caballero" selected>Caballero</option>
+                                                        <option value="Dama">Dama</option>
+                                                        <option value="Otro">Otro (Especial)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="option-row">
+                                                    <label>Talla:</label>
+                                                    <select class="size-select">
+                                                        <option value="XS">XS</option>
+                                                        <option value="S">S</option>
+                                                        <option value="M" selected>M</option>
+                                                        <option value="L">L</option>
+                                                        <option value="XL">XL</option>
+                                                        <option value="XXL">XXL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="option-row special-detail-row hidden">
+                                                    <label>Detalle:</label>
+                                                    <input type="text" class="special-input" placeholder="Ej. Talla 8 (Niño)...">
+                                                </div>
+                                            </div>
+                                            <div class="option-row qty-row">
+                                                <div class="qty-stepper">
+                                                    <button type="button" class="btn-qty-minus">-</button>
+                                                    <input type="number" class="qty-input" value="0" min="0" max="99" readonly>
+                                                    <button type="button" class="btn-qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Shorts Category -->
+                            <div class="category-block">
+                                <h3 class="category-title">Shorts / Culottes</h3>
+                                <div class="product-cards-container">
+                                    <!-- Card 3: Short con Tirantes -->
+                                    <div class="product-card" data-product-id="short_con_tirantes" data-product-name="Short con Tirantes">
+                                        <div class="card-glow"></div>
+                                        
+                                        <!-- Product Render Image -->
+                                        <div class="product-image-container">
+                                            <img src="images/short_con_tirantes.jpg" alt="Short con Tirantes" class="product-img" onerror="this.parentElement.style.display='none';">
+                                        </div>
+
+                                        <div class="product-details">
+                                            <div class="product-icon">
+                                                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
+                                                    <path d="M35,25 L35,50 L30,50 L25,85 L48,85 L50,65 L52,85 L75,85 L70,50 L65,50 L65,25 Z" stroke-linejoin="round" fill="rgba(212, 175, 55, 0.03)"/>
+                                                    <path d="M35,25 L35,45 M65,25 L65,45" stroke-linecap="round"/>
+                                                    <path d="M35,25 C40,20 60,20 65,25" stroke-linecap="round"/>
+                                                </svg>
+                                            </div>
+                                            <div class="product-info">
+                                                <h4 class="product-title-label">Short con Tirantes</h4>
+                                                <p class="product-desc">Tirantes de malla ultra respirables y badana de alta densidad.</p>
+                                            </div>
+                                        </div>
+                                        <div class="product-options">
+                                            <div class="options-column">
+                                                <div class="option-row">
+                                                    <label>Corte:</label>
+                                                    <select class="gender-select">
+                                                        <option value="Caballero" selected>Caballero</option>
+                                                        <option value="Dama">Dama</option>
+                                                        <option value="Otro">Otro (Especial)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="option-row">
+                                                    <label>Talla:</label>
+                                                    <select class="size-select">
+                                                        <option value="XS">XS</option>
+                                                        <option value="S">S</option>
+                                                        <option value="M" selected>M</option>
+                                                        <option value="L">L</option>
+                                                        <option value="XL">XL</option>
+                                                        <option value="XXL">XXL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="option-row special-detail-row hidden">
+                                                    <label>Detalle:</label>
+                                                    <input type="text" class="special-input" placeholder="Especificar...">
+                                                </div>
+                                            </div>
+                                            <div class="option-row qty-row">
+                                                <div class="qty-stepper">
+                                                    <button type="button" class="btn-qty-minus">-</button>
+                                                    <input type="number" class="qty-input" value="0" min="0" max="99" readonly>
+                                                    <button type="button" class="btn-qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card 4: Short sin Tirantes -->
+                                    <div class="product-card" data-product-id="short_sin_tirantes" data-product-name="Short sin Tirantes">
+                                        <div class="card-glow"></div>
+                                        
+                                        <!-- Product Render Image -->
+                                        <div class="product-image-container">
+                                            <img src="images/short_sin_tirantes.jpg" alt="Short sin Tirantes" class="product-img" onerror="this.parentElement.style.display='none';">
+                                        </div>
+
+                                        <div class="product-details">
+                                            <div class="product-icon">
+                                                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
+                                                    <path d="M30,45 L25,85 L48,85 L50,65 L52,85 L75,85 L70,45 Z" stroke-linejoin="round" fill="rgba(212, 175, 55, 0.03)"/>
+                                                    <path d="M30,45 L70,45" stroke-linecap="round" stroke-width="3"/>
+                                                </svg>
+                                            </div>
+                                            <div class="product-info">
+                                                <h4 class="product-title-label">Short sin Tirantes</h4>
+                                                <p class="product-desc">Cinta de silicón en muslo y costuras planas anti-roce.</p>
+                                            </div>
+                                        </div>
+                                        <div class="product-options">
+                                            <div class="options-column">
+                                                <div class="option-row">
+                                                    <label>Corte:</label>
+                                                    <select class="gender-select">
+                                                        <option value="Caballero" selected>Caballero</option>
+                                                        <option value="Dama">Dama</option>
+                                                        <option value="Otro">Otro (Especial)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="option-row">
+                                                    <label>Talla:</label>
+                                                    <select class="size-select">
+                                                        <option value="XS">XS</option>
+                                                        <option value="S">S</option>
+                                                        <option value="M" selected>M</option>
+                                                        <option value="L">L</option>
+                                                        <option value="XL">XL</option>
+                                                        <option value="XXL">XXL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="option-row special-detail-row hidden">
+                                                    <label>Detalle:</label>
+                                                    <input type="text" class="special-input" placeholder="Especificar...">
+                                                </div>
+                                            </div>
+                                            <div class="option-row qty-row">
+                                                <div class="qty-stepper">
+                                                    <button type="button" class="btn-qty-minus">-</button>
+                                                    <input type="number" class="qty-input" value="0" min="0" max="99" readonly>
+                                                    <button type="button" class="btn-qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Enterizos Category -->
+                            <div class="category-block">
+                                <h3 class="category-title">Enterizos <span class="category-badge-dama">Solo Dama</span></h3>
+                                <div class="product-cards-container">
+                                    <!-- Card 5a: Enterizo Manga Corta (Dama) -->
+                                    <div class="product-card" data-product-id="enterizo_manga_corta_dama" data-product-name="Enterizo Manga Corta (Dama)">
+                                        <div class="card-glow"></div>
+                                        <div class="product-image-container">
+                                            <img src="images/enterizo_manga_corta_dama.jpg" alt="Enterizo Manga Corta (Dama)" class="product-img" onerror="this.parentElement.style.display='none';">
+                                        </div>
+                                        <div class="product-details">
+                                            <div class="product-icon">
+                                                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
+                                                    <path d="M30,20 L20,30 L32,38 L32,60 L25,90 L48,90 L50,75 L52,90 L75,90 L68,60 L68,38 L80,30 L70,20 L50,28 Z" stroke-linejoin="round" fill="rgba(212, 175, 55, 0.03)"/>
+                                                    <path d="M50,28 L50,55" stroke-linecap="round" stroke-dasharray="1,2"/>
+                                                </svg>
+                                            </div>
+                                            <div class="product-info">
+                                                <h4 class="product-title-label">Enterizo Manga Corta</h4>
+                                                <p class="product-desc">Corte exclusivo para dama, aerodinámica total y badana ergonómica de gel.</p>
+                                            </div>
+                                        </div>
+                                        <div class="product-options">
+                                            <div class="options-column">
+                                                <div class="option-row">
+                                                    <label>Corte:</label>
+                                                    <span class="static-option-text">Dama</span>
+                                                </div>
+                                                <div class="option-row">
+                                                    <label>Talla:</label>
+                                                    <select class="size-select">
+                                                        <option value="XS">XS</option>
+                                                        <option value="S">S</option>
+                                                        <option value="M" selected>M</option>
+                                                        <option value="L">L</option>
+                                                        <option value="XL">XL</option>
+                                                        <option value="XXL">XXL</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="option-row qty-row">
+                                                <div class="qty-stepper">
+                                                    <button type="button" class="btn-qty-minus">-</button>
+                                                    <input type="number" class="qty-input" value="0" min="0" max="99" readonly>
+                                                    <button type="button" class="btn-qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card 5b: Enterizo Manga Larga (Dama) -->
+                                    <div class="product-card" data-product-id="enterizo_manga_larga_dama" data-product-name="Enterizo Manga Larga (Dama)">
+                                        <div class="card-glow"></div>
+                                        <div class="product-image-container">
+                                            <img src="images/enterizo_manga_larga_dama.jpg" alt="Enterizo Manga Larga (Dama)" class="product-img" onerror="this.parentElement.style.display='none';">
+                                        </div>
+                                        <div class="product-details">
+                                            <div class="product-icon">
+                                                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
+                                                    <path d="M30,20 L10,30 L22,38 L32,60 L25,90 L48,90 L50,75 L52,90 L75,90 L68,60 L78,38 L90,30 L70,20 L50,28 Z" stroke-linejoin="round" fill="rgba(212, 175, 55, 0.03)"/>
+                                                    <path d="M50,28 L50,55" stroke-linecap="round" stroke-dasharray="1,2"/>
+                                                </svg>
+                                            </div>
+                                            <div class="product-info">
+                                                <h4 class="product-title-label">Enterizo Manga Larga</h4>
+                                                <p class="product-desc">Máxima cobertura y aerodinámica, corte adaptado para dama.</p>
+                                            </div>
+                                        </div>
+                                        <div class="product-options">
+                                            <div class="options-column">
+                                                <div class="option-row">
+                                                    <label>Corte:</label>
+                                                    <span class="static-option-text">Dama</span>
+                                                </div>
+                                                <div class="option-row">
+                                                    <label>Talla:</label>
+                                                    <select class="size-select">
+                                                        <option value="XS">XS</option>
+                                                        <option value="S">S</option>
+                                                        <option value="M" selected>M</option>
+                                                        <option value="L">L</option>
+                                                        <option value="XL">XL</option>
+                                                        <option value="XXL">XXL</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="option-row qty-row">
+                                                <div class="qty-stepper">
+                                                    <button type="button" class="btn-qty-minus">-</button>
+                                                    <input type="number" class="qty-input" value="0" min="0" max="99" readonly>
+                                                    <button type="button" class="btn-qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Complementos & Casual Category -->
+                            <div class="category-block">
+                                <h3 class="category-title">Complementos & Casual</h3>
+                                <div class="product-cards-container">
+                                    <!-- Card 6: Cortaviento & impermeable -->
+                                    <div class="product-card" data-product-id="cortaviento_impermeable" data-product-name="Cortaviento & impermeable">
+                                        <div class="card-glow"></div>
+                                        <div class="product-image-container">
+                                            <img src="images/rompevientos_manga_larga.jpg" alt="Cortaviento &amp; Impermeable" class="product-img" onerror="this.parentElement.style.display='none';">
+                                        </div>
+                                        <div class="product-details">
+                                            <div class="product-icon">
+                                                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
+                                                    <path d="M30,25 L20,35 L32,45 L32,85 L68,85 L68,45 L80,35 L70,25 Z" stroke-linejoin="round" fill="rgba(212, 175, 55, 0.03)"/>
+                                                    <path d="M40,25 L50,30 L60,25" stroke-linecap="round"/>
+                                                    <path d="M42,50 L58,50" stroke-dasharray="2,2"/>
+                                                </svg>
+                                            </div>
+                                            <div class="product-info">
+                                                <h4 class="product-title-label">Cortaviento & Impermeable</h4>
+                                                <p class="product-desc">Tela ligera y transpirable, protección contra la lluvia, cierre completo y bolsillo posterior.</p>
+                                            </div>
+                                        </div>
+                                        <div class="product-options">
+                                            <div class="options-column">
+                                                <div class="option-row">
+                                                    <label>Corte:</label>
+                                                    <select class="gender-select">
+                                                        <option value="Caballero" selected>Caballero</option>
+                                                        <option value="Dama">Dama</option>
+                                                        <option value="Otro">Otro (Especial)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="option-row">
+                                                    <label>Talla:</label>
+                                                    <select class="size-select">
+                                                        <option value="XS">XS</option>
+                                                        <option value="S">S</option>
+                                                        <option value="M" selected>M</option>
+                                                        <option value="L">L</option>
+                                                        <option value="XL">XL</option>
+                                                        <option value="XXL">XXL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="option-row special-detail-row hidden">
+                                                    <label>Detalle:</label>
+                                                    <input type="text" class="special-input" placeholder="Especificar...">
+                                                </div>
+                                            </div>
+                                            <div class="option-row qty-row">
+                                                <div class="qty-stepper">
+                                                    <button type="button" class="btn-qty-minus">-</button>
+                                                    <input type="number" class="qty-input" value="0" min="0" max="99" readonly>
+                                                    <button type="button" class="btn-qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card 7: Playera tipo polo -->
+                                    <div class="product-card" data-product-id="playera_polo" data-product-name="Playera tipo polo">
+                                        <div class="card-glow"></div>
+                                        <div class="product-image-container">
+                                            <img src="images/playera_tipo_polo.jpg" alt="Playera tipo polo" class="product-img" onerror="this.parentElement.style.display='none';">
+                                        </div>
+                                        <div class="product-details">
+                                            <div class="product-icon">
+                                                <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5">
+                                                    <path d="M30,30 L20,38 L35,45 L35,85 L65,85 L65,45 L80,38 L70,30 L50,34 Z" stroke-linejoin="round" fill="rgba(212, 175, 55, 0.03)"/>
+                                                    <path d="M38,30 L50,34 L62,30" stroke-linecap="round"/>
+                                                    <circle cx="50" cy="40" r="1.5" fill="currentColor"/>
+                                                    <circle cx="50" cy="46" r="1.5" fill="currentColor"/>
+                                                </svg>
+                                            </div>
+                                            <div class="product-info">
+                                                <h4 class="product-title-label">Playera Tipo Polo</h4>
+                                                <p class="product-desc">Corte casual y elegante, cuello tipo polo con botones. Ideal para traslados y eventos.</p>
+                                            </div>
+                                        </div>
+                                        <div class="product-options">
+                                            <div class="options-column">
+                                                <div class="option-row">
+                                                    <label>Corte:</label>
+                                                    <select class="gender-select">
+                                                        <option value="Caballero" selected>Caballero</option>
+                                                        <option value="Dama">Dama</option>
+                                                        <option value="Otro">Otro (Especial)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="option-row">
+                                                    <label>Talla:</label>
+                                                    <select class="size-select">
+                                                        <option value="XS">XS</option>
+                                                        <option value="S">S</option>
+                                                        <option value="M" selected>M</option>
+                                                        <option value="L">L</option>
+                                                        <option value="XL">XL</option>
+                                                        <option value="XXL">XXL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="option-row special-detail-row hidden">
+                                                    <label>Detalle:</label>
+                                                    <input type="text" class="special-input" placeholder="Especificar...">
+                                                </div>
+                                            </div>
+                                            <div class="option-row qty-row">
+                                                <div class="qty-stepper">
+                                                    <button type="button" class="btn-qty-minus">-</button>
+                                                    <input type="number" class="qty-input" value="0" min="0" max="99" readonly>
+                                                    <button type="button" class="btn-qty-plus">+</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </form>
+            </div>
+
+            <!-- Sidebar / Order Summary -->
+            <aside class="app-sidebar">
+                <div class="summary-card card sticky-summary">
+                    <h3>Resumen del Pedido</h3>
+                    
+                    <div id="summary-empty" class="summary-empty-state">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="empty-cart-icon"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        <p>Aún no has agregado ninguna prenda a tu pedido.</p>
+                    </div>
+
+                    <div id="summary-content" class="summary-content-list hidden">
+                        <div class="customer-preview">
+                            <span class="preview-label">Solicitante:</span>
+                            <span id="preview-name" class="preview-value">No ingresado</span>
+                        </div>
+                        <hr class="summary-divider">
+                        <ul id="summary-items" class="summary-items-list">
+                            <!-- Items populated dynamically by JS -->
+                        </ul>
+                        <hr class="summary-divider">
+                        <div class="summary-totals">
+                            <span>Prendas totales:</span>
+                            <span id="total-count" class="totals-badge">0</span>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="action-buttons">
+                            <button type="button" id="btn-submit" class="btn btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                Confirmar y Enviar Pedido
+                            </button>
+                            <button type="button" id="btn-edit-order" class="btn btn-secondary hidden">
+                                Editar pedido
+                            </button>
+                            <span class="button-hint">Se registrará en Google Sheets y se abrirá WhatsApp.</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Status Bar / Toast -->
+        <div id="status-toast" class="toast hidden">
+            <span id="toast-message"></span>
+        </div>
+
+        <!-- Configuration Modal (Admin settings) -->
+        <div id="config-modal" class="modal-overlay hidden">
+            <div class="modal card">
+                <div class="modal-header">
+                    <h3>Configuración de Destinos</h3>
+                    <button id="btn-close-config" class="icon-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-desc">Define el número de teléfono donde recibirás los WhatsApps y el enlace del script para guardar los datos en Google Sheets.</p>
+                    
+                    <div class="input-group">
+                        <label for="cfg-whatsapp">Número de WhatsApp (con código de país, sin signos + ni espacios)</label>
+                        <input type="text" id="cfg-whatsapp" placeholder="Ej: 521234567890" value="521234567890">
+                        <span class="helper-text">Ejemplo: 52 (México) + 1234567890 = 521234567890.</span>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="cfg-sheet-url">URL de Google Web App (Apps Script)</label>
+                        <input type="url" id="cfg-sheet-url" placeholder="https://script.google.com/macros/s/.../exec">
+                        <span class="helper-text">El enlace de ejecución generado al publicar el script en tu hoja de cálculo. Dejar vacío si solo quieres usar WhatsApp.</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn-save-config" class="btn btn-primary">Guardar Configuración</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script imports -->
+    <script src="script.js?v=2026070802"></script>
+</body>
+</html>
